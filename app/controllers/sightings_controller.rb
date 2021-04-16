@@ -5,7 +5,7 @@ class SightingsController < ApplicationController
         render json: sightings, include: [:bird, :location]
     end
     def show
-        sighting = Sighting.find_by(id:params[:id])
+        sighting = Sighting.find(params[:id])
         if sighting
             # render json: [id: sighting.id, bird: sighting.bird, location: sighting.location]
             render json: sighting.to_json(:include => {
